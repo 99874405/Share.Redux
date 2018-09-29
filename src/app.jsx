@@ -1,5 +1,5 @@
 import React from 'react'
-import { Welcome, A, B, C, D, E } from './components'
+import { A, B, C, D, E, Welcome } from './components'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 
 
@@ -22,6 +22,7 @@ export default class extends React.Component {
                             <Route exact path="/3" component={C} />
                             <Route exact path="/4" component={D} />
                             <Route exact path="/5" component={E} />
+                            <Route component={Welcome} />
                         </Switch>
                     </div>
                 </div>
