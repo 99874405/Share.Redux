@@ -21,7 +21,7 @@ const store = createStore(function (state = initialState, action = {}) {
             return state
     }
 },
-    applyMiddleware(Thunk)
+    applyMiddleware(Thunk, Logger)
 )
 
 
