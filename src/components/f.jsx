@@ -1,6 +1,6 @@
 import React from 'react'
-import Thunk from 'redux-thunk'
-import Logger from 'redux-logger'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 import { connect, Provider } from 'react-redux'
 import { Progress, Button } from 'antd'
@@ -21,7 +21,7 @@ const store = createStore(function (state = initialState, action = {}) {
             return state
     }
 },
-    applyMiddleware(Thunk, Logger)
+    applyMiddleware(thunk, logger)
 )
 
 
