@@ -5,7 +5,7 @@ import { Progress, Button } from 'antd'
 
 
 const initialState = {
-    count: 55
+    count: 56
 }
 
 
