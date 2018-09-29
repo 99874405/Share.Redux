@@ -19,7 +19,9 @@ const store = createStore(function (state = initialState, action = {}) {
         default:
             return state
     }
-})
+},
+    applyMiddleware(Thunk)
+)
 
 
 @connect(
