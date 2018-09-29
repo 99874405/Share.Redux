@@ -1,0 +1,5 @@
+export { default as A } from './a.jsx'
+export { default as B } from './b.jsx'
+export { default as C } from './c.jsx'
+export { default as D } from './d.jsx'
+export { default as E } from './e.jsx'
