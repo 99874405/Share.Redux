@@ -1,6 +1,6 @@
 import React from 'react'
 import Thunk from 'redux-thunk'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { connect, Provider } from 'react-redux'
 import { Progress, Button } from 'antd'
 
