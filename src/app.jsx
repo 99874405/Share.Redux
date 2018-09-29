@@ -23,6 +23,7 @@ export default class extends React.Component {
                             <Route exact path="/3" component={C} />
                             <Route exact path="/4" component={D} />
                             <Route exact path="/5" component={E} />
+                            <Route exact path="/6" component={F} />
                             <Route component={Welcome} />
                         </Switch>
                     </div>
