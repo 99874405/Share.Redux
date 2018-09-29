@@ -14,6 +14,7 @@ export default class extends React.Component {
                         <NavLink activeClassName="__active__" to="/3">场景 3</NavLink>
                         <NavLink activeClassName="__active__" to="/4">场景 4</NavLink>
                         <NavLink activeClassName="__active__" to="/5">场景 5</NavLink>
+                        <NavLink activeClassName="__active__" to="/6">场景 6</NavLink>
                     </div>
                     <div className="__container__">
                         <Switch>
