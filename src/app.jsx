@@ -1,5 +1,5 @@
 import React from 'react'
-import { A, B, C, D, E } from './components'
+import { Welcome, A, B, C, D, E } from './components'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 
 
