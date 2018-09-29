@@ -32,8 +32,8 @@ const store = createStore(function (state = initialState, action = {}) {
     },
     dispatch => {
         return {
-            decrement: () => dispatch({ type: 'decrement' }),
-            increment: () => dispatch({ type: 'increment' }),
+            decrement: () => dispatch(dispatch => setTimeout(() => dispatch({ type: 'decrement' }), 1000)),
+            increment: () => dispatch(dispatch => setTimeout(() => dispatch({ type: 'increment' }), 1000)),
         }
     }
 )
