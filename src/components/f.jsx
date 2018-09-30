@@ -27,14 +27,14 @@ const store = createStore(function (state = initialState, action = {}) {
 
 function async_decrement() {
     return dispatch => {
-        setTimeout(() => dispatch({ type: 'decrement' }), 2000)
+        setTimeout(() => dispatch({ type: 'decrement' }), 1000)
     }
 }
 
 
 function async_increment() {
     return dispatch => {
-        setTimeout(() => dispatch({ type: 'increment' }), 2000)
+        setTimeout(() => dispatch({ type: 'increment' }), 1000)
     }
 }
 
