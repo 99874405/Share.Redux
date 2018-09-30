@@ -57,7 +57,7 @@ class Component extends React.Component {
     render() {
         return (
             <div>
-                <Spin>
+                <Spin spinning={!!window.timeId}>
                     <Progress type="circle" percent={this.props.count} />&nbsp;&nbsp;
                     <Button.Group>
                         <Button icon="minus" onClick={this.decrement} />
