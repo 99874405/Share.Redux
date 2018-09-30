@@ -27,14 +27,14 @@ const store = createStore(function (state = initialState, action = {}) {
 
 function async_decrement() {
     return dispatch => {
-        setTimeout(() => dispatch({ type: 'decrement' }), 1500)
+        setTimeout(() => dispatch(arguments[0]), 1500)
     }
 }
 
 
 function async_increment() {
     return dispatch => {
-        setTimeout(() => dispatch({ type: 'increment' }), 1500)
+        setTimeout(() => dispatch(arguments[0]), 1500)
     }
 }
 
@@ -47,8 +47,8 @@ function async_increment() {
     },
     dispatch => {
         return {
-            decrement: () => dispatch(dispatch => setTimeout(() => dispatch({ type: 'decrement' }), 1000)),
-            increment: () => dispatch(dispatch => setTimeout(() => dispatch({ type: 'increment' }), 1000)),
+            decrement: () => dispatch(async_decrement({ type: 'decrement' })),
+            increment: () => dispatch(async_increment({ type: 'increment' })),
         }
     }
 )
