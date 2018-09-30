@@ -32,6 +32,13 @@ function async_decrement() {
 }
 
 
+function async_increment() {
+    return dispatch => {
+        setTimeout(() => dispatch({ type: 'increment' }), 1500)
+    }
+}
+
+
 @connect(
     state => {
         return (
