@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 import { connect, Provider } from 'react-redux'
-import { Progress, Button, Spin } from 'antd'
+import { Progress, Button } from 'antd'
 
 
 const initialState = {
