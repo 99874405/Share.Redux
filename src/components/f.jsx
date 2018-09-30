@@ -25,6 +25,13 @@ const store = createStore(function (state = initialState, action = {}) {
 )
 
 
+function async_decrement() {
+    return dispatch => {
+        setTimeout(() => dispatch({ type: 'decrement' }), 1500)
+    }
+}
+
+
 @connect(
     state => {
         return (
