@@ -57,11 +57,13 @@ class Component extends React.Component {
     render() {
         return (
             <div>
-                <Progress type="circle" percent={this.props.count} />&nbsp;&nbsp;
-                <Button.Group>
-                    <Button icon="minus" onClick={this.decrement} />
-                    <Button icon="plus" onClick={this.increment} />
-                </Button.Group>
+                <Spin>
+                    <Progress type="circle" percent={this.props.count} />&nbsp;&nbsp;
+                    <Button.Group>
+                        <Button icon="minus" onClick={this.decrement} />
+                        <Button icon="plus" onClick={this.increment} />
+                    </Button.Group>
+                </Spin>
             </div>
         )
     }
