@@ -21,7 +21,7 @@ const store = createStore(function (state = initialState, action = {}) {
             return state
     }
 },
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk, process.env.NODE_ENV.includes('development') && logger)
 )
 
 
