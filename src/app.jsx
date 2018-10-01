@@ -1,6 +1,6 @@
 import React from 'react'
 import { A, B, C, D, E, F, Welcome } from './components'
-import { BrowserRouter, withRouter, NavLink, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 
 
 export default class extends React.Component {
@@ -18,12 +18,12 @@ export default class extends React.Component {
                     </div>
                     <div className="__container__">
                         <Switch>
-                            <Route exact path="/1" component={ withRouter(A) } />
-                            <Route exact path="/2" component={ withRouter(B) } />
-                            <Route exact path="/3" component={ withRouter(C) } />
-                            <Route exact path="/4" component={ withRouter(D) } />
-                            <Route exact path="/5" component={ withRouter(E) } />
-                            <Route exact path="/6" component={ withRouter(F) } />
+                            <Route exact path="/1" component={A} />
+                            <Route exact path="/2" component={B} />
+                            <Route exact path="/3" component={C} />
+                            <Route exact path="/4" component={D} />
+                            <Route exact path="/5" component={E} />
+                            <Route exact path="/6" component={F} />
                             <Route component={Welcome} />
                         </Switch>
                     </div>
