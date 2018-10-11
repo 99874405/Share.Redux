@@ -45,7 +45,7 @@ const UI = connect(state => state)(class extends React.Component {
     }
 
     increment = () => {
-        tthis.props.dispatch({ type: 'increment' })
+        this.props.dispatch({ type: 'increment' })
     }
 })
 
