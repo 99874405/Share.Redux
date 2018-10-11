@@ -16,7 +16,7 @@ export default class extends React.Component {
                         <NavLink activeClassName={Style.__active__} to="/4">场景 4</NavLink>
                         <NavLink activeClassName={Style.__active__} to="/5">场景 5</NavLink>
                         <NavLink activeClassName={Style.__active__} to="/6">场景 6</NavLink>
-                        <NavLink activeClassName={Style.__active__} to="/7">redux & react-redux</NavLink>
+                        <NavLink activeClassName={Style.__active__} to="/7">模拟: redux & react-redux</NavLink>
                     </div>
                     <div className={Style.__container__}>
                         <Switch>
