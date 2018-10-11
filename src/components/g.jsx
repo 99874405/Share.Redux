@@ -11,7 +11,7 @@ const store = createStore(() => {
 })
 
 
-const UI = connect()(class extends React.Component {
+const UI = connect(state => state)(class extends React.Component {
 
     state = {
         count: 51
