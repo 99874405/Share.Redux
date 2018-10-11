@@ -7,7 +7,7 @@ import { Provider } from '../react.redux'
 
 
 const store = createStore(() => {
-
+    return 50
 })
 
 
