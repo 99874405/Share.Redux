@@ -1,6 +1,6 @@
 
 
-function createStore(reducer, middleware) {
+export function createStore(reducer, middleware) {
     let listener = () => {}
     let state = reducer(undefined, {})
     let store = {
@@ -14,9 +14,4 @@ function createStore(reducer, middleware) {
             listener = listener
         },
     }
-}
-
-
-export default {
-    createStore
 }
