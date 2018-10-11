@@ -22,7 +22,11 @@ const store = createStore((state, action) => {
 }, function thunk() {
     return dispatch => {
         return action => {
-            console.log(action)
+            if (typeof action === 'function') {
+                action(dispatch)
+            } else {
+                dispatch(action)
+            }
         }
     }
 })
