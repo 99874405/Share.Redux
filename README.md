@@ -13,6 +13,17 @@ const store = {
 function connect(mapStateToProps) {
     return Component => {
         return class extends React.Component {
+
+            state = {
+                now: Date.now()
+            }
+
+            componentDidMount() {
+                store.listener(() => {
+                    this.setState({ now: Date.now() })
+                })
+            }
+
             render() {
                 return <Component {...mapStateToProps(store)} />
             }
