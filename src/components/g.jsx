@@ -8,6 +8,12 @@ import { Provider, connect } from '../react.redux'
 
 const store = createStore((state, action) => {
     switch (action.type) {
+        case 'decrement':
+            return { count: state.count - 10 < 0 ? 0 : state.count - 10 }
+        
+        case 'increment':
+            return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
+
         default:
             return state || {
                 count: 50
