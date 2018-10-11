@@ -6,6 +6,11 @@ import { createStore } from '../redux'
 import { Provider } from '../react.redux'
 
 
+const store = createStore(() => {
+
+})
+
+
 class UI extends React.Component {
 
     state = {
