@@ -28,6 +28,13 @@ const store = createStore((state, action) => {
                 console.log('next state', store.getState())
             }
         }
+    },
+    function thunk(store) {
+        return next => {
+            return action => {
+                
+            }
+        }
     }
 ])
 
