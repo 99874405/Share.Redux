@@ -20,7 +20,7 @@ export class Provider extends React.Component {
 }
 
 
-export function connect(mapStateToProps) {
+export function connect(mapStateToProps = () => {}) {
     return function (Component) {
         return class extends React.Component {
             static contextTypes = {
@@ -33,7 +33,7 @@ export function connect(mapStateToProps) {
 
             render() {
                 return (
-                    <Component />
+                    <Component dispatch={this.context.store.dispatch} { ...mapStateToProps(this.context.store.getState()) } />
                 )
             }
         }
