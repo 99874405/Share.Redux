@@ -3,6 +3,7 @@ import { Progress, Button } from 'antd'
 
 
 import { createStore } from '../redux'
+import Provider from '../react.redux'
 
 
 class UI extends React.Component {
