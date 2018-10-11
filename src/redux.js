@@ -16,7 +16,7 @@ export function createStore(reducer, middlewares) {
     }
     
     if (Array.isArray(middlewares)) {
-        middlewares.forEach(middleware => store.dispatch = middleware()(store.dispatch))
+        middlewares.forEach(middleware => store.dispatch = middleware(store))
     }
 
     return store
