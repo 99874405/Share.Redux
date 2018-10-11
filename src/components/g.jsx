@@ -20,15 +20,6 @@ const store = createStore((state, action) => {
             }
     }
 }, [
-    function logger(store) {
-        return next => {
-            return action => {
-                console.log('prew state', store.getState())
-                next(action); console.log(action)
-                console.log('next state', store.getState())
-            }
-        }
-    },
     function thunk(store) {
         return next => {
             return action => {
@@ -38,6 +29,15 @@ const store = createStore((state, action) => {
                 if (typeof action === 'function') {
                     action(next)
                 }
+            }
+        }
+    },
+    function logger(store) {
+        return next => {
+            return action => {
+                console.log('prew state', store.getState())
+                next(action); console.log(action)
+                console.log('next state', store.getState())
             }
         }
     },
