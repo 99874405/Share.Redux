@@ -37,7 +37,9 @@ class UI extends React.Component {
 export default class extends React.Component {
     render() {
         return (
-            <UI />
+            <Provider>
+                <UI />
+            </Provider>
         )
     }
 }
