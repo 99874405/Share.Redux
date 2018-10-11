@@ -35,6 +35,7 @@ const C_Wrapper = connect(state => { return state})(
     }
 )
 
+
 class B extends React.Component {
     render() {
         return (
@@ -43,6 +44,7 @@ class B extends React.Component {
     }
 }
 
+
 class A extends React.Component {
     render() {
         return (
@@ -50,6 +52,7 @@ class A extends React.Component {
         )
     }
 }
+
 
 class Container extends React.Component {
     static contextTypes = {
@@ -64,6 +67,7 @@ class Container extends React.Component {
         )
     }
 }
+
 
 export default class extends React.Component {
 
