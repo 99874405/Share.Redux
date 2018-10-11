@@ -49,10 +49,6 @@ const store = createStore((state, action) => {
 
 const UI = connect(state => state)(class extends React.Component {
 
-    state = {
-        count: 51
-    }
-
     render() {
         return (
             <div>
