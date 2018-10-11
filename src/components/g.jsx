@@ -19,7 +19,10 @@ const store = createStore((state, action) => {
                 count: 50
             }
     }
-}, [
+}, 
+
+// middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
+[
     function thunk(store) {
         return next => {
             return action => {
