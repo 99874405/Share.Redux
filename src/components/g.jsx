@@ -19,17 +19,28 @@ const store = createStore((state, action) => {
                 count: 50
             }
     }
-}, function thunk() {
-    return dispatch => {
-        return action => {
-            if (typeof action === 'function') {
-                action(dispatch)
-            } else {
-                dispatch(action)
+}, [
+    function thunk() {
+        return dispatch => {
+            return action => {
+                if (typeof action === 'function') {
+                    action(dispatch)
+                } else {
+                    dispatch(action)
+                }
             }
         }
-    }
-})
+    },
+    function logger() {
+        return dispatch => {
+            return action => {
+                console.log('prev', store.getState())
+                dispatch(action)
+                console.log('next', store.getState())
+            }
+        }
+    },
+])
 
 
 const UI = connect(state => state)(class extends React.Component {
