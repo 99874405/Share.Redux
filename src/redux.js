@@ -1,6 +1,6 @@
 
 
-export function createStore(reducer, middleware) {
+export function createStore(reducer, middlewares) {
     let listener = () => {}
     let state = reducer(undefined, {})
     let store = {
@@ -15,8 +15,8 @@ export function createStore(reducer, middleware) {
         },
     }
     
-    if (middleware) {
-        store.dispatch = middleware()(store.dispatch)
+    if (Array.isArray(middlewares)) {
+        middlewares.forEach(middleware => store.dispatch = middleware()(store.dispatch))
     }
 
     return store
