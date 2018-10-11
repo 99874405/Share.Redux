@@ -1,6 +1,6 @@
 import Style from './app.less'
 import React from 'react'
-import { A, B, C, D, E, F, Welcome } from './components'
+import { A, B, C, D, E, F, G, Welcome } from './components'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 
 
@@ -16,6 +16,7 @@ export default class extends React.Component {
                         <NavLink activeClassName={Style.__active__} to="/4">场景 4</NavLink>
                         <NavLink activeClassName={Style.__active__} to="/5">场景 5</NavLink>
                         <NavLink activeClassName={Style.__active__} to="/6">场景 6</NavLink>
+                        <NavLink activeClassName={Style.__active__} to="/7">场景 7</NavLink>
                     </div>
                     <div className={Style.__container__}>
                         <Switch>
@@ -25,6 +26,7 @@ export default class extends React.Component {
                             <Route exact path="/4" component={D} />
                             <Route exact path="/5" component={E} />
                             <Route exact path="/6" component={F} />
+                            <Route exact path="/7" component={G} />
                             <Route component={Welcome} />
                         </Switch>
                     </div>
