@@ -8,25 +8,21 @@ const store = {
     }
 }
 
-function aaa(fn1) {
+function aaa(mapStateToProps) {
     return Component => {
-        return class Wrapper extends React.Component {
+        return class extends React.Component {
             render() {
-                return <Component {...fn1(store)} />
+                return <Component {...mapStateToProps(store)} />
             }
         }
     }
 }
 
 
-const C_Wrapper = aaa(state => {
-    return state
-})(
+const C_Wrapper = aaa(state => { return state})(
     class C extends React.Component {
         render() {
-    
             console.log(this)
-    
             return (
                 <div>
                     {/* { this.context.profile.name } */}
@@ -46,10 +42,6 @@ class B extends React.Component {
 }
 
 class A extends React.Component {
-
-    static contextTypes = {
-        profile: Types.object
-    }
     render() {
         return (
             <B />
@@ -57,7 +49,7 @@ class A extends React.Component {
     }
 }
 
-class Wrap extends React.Component {
+class Container extends React.Component {
     static contextTypes = {
         profile: Types.object
     }
@@ -82,6 +74,6 @@ export default class extends React.Component {
     }
 
     render() {
-        return <Wrap />
+        return <Container />
     }
 }
