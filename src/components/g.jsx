@@ -11,7 +11,7 @@ const store = createStore(() => {
 })
 
 
-class UI extends React.Component {
+const UI = connect()(class extends React.Component {
 
     state = {
         count: 51
@@ -36,7 +36,7 @@ class UI extends React.Component {
     increment = () => {
         this.setState(state => ({ count: state.count + 10 > 100 ? 100 : state.count + 10 }))
     }
-}
+})
 
 
 export default class extends React.Component {
