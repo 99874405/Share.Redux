@@ -1,6 +1,7 @@
 import React from 'react'
 import Types from 'prop-types'
 
+
 const store = {
     profile: {
         name: 'free',
@@ -8,7 +9,8 @@ const store = {
     }
 }
 
-function aaa(mapStateToProps) {
+
+function connect(mapStateToProps) {
     return Component => {
         return class extends React.Component {
             render() {
@@ -19,7 +21,7 @@ function aaa(mapStateToProps) {
 }
 
 
-const C_Wrapper = aaa(state => { return state})(
+const C_Wrapper = connect(state => { return state})(
     class C extends React.Component {
         render() {
             console.log(this)
