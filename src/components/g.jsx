@@ -29,13 +29,9 @@ const store = createStore((state, action) => {
             }
         }
     },
-    function thunk(store) {
-        return next => {
-            return action => {
-                
-            }
-        }
-    }
+    function thunk() {
+        
+    },
 ])
 
 
