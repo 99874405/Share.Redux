@@ -2,6 +2,9 @@ import React from 'react'
 import { Progress, Button } from 'antd'
 
 
+import { createStore } from '../redux'
+
+
 export default class extends React.Component {
 
     state = {
