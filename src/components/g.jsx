@@ -41,11 +41,11 @@ const UI = connect(state => state)(class extends React.Component {
     }
 
     decrement = () => {
-        this.setState(state => ({ count: state.count - 10 < 0 ? 0 : state.count - 10 }))
+        this.props.dispatch({ type: 'decrement' })
     }
 
     increment = () => {
-        this.setState(state => ({ count: state.count + 10 > 100 ? 100 : state.count + 10 }))
+        tthis.props.dispatch({ type: 'increment' })
     }
 })
 
