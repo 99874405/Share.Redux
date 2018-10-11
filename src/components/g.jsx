@@ -20,6 +20,15 @@ const store = createStore((state, action) => {
             }
     }
 }, [
+    function logger() {
+        return dispatch => {
+            return action => {
+                console.log('prev', store.getState())
+                dispatch(action)
+                console.log('next', store.getState())
+            }
+        }
+    },
     function thunk() {
         return dispatch => {
             return action => {
@@ -28,15 +37,6 @@ const store = createStore((state, action) => {
                 } else {
                     dispatch(action)
                 }
-            }
-        }
-    },
-    function logger() {
-        return dispatch => {
-            return action => {
-                console.log('prev', store.getState())
-                dispatch(action)
-                console.log('next', store.getState())
             }
         }
     },
