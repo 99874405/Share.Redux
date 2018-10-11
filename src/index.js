@@ -1,4 +1,3 @@
-import './public.less'
 import 'antd/dist/antd.css'
 import App from './app.jsx'
 import React from 'react'
