@@ -16,7 +16,7 @@ export function createStore(reducer, middleware) {
     }
     
     if (middleware) {
-        middleware()
+        store.dispatch = middleware()(store.dispatch)
     }
 
     return store

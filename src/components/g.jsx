@@ -20,7 +20,11 @@ const store = createStore((state, action) => {
             }
     }
 }, () => {
-    return 
+    return dispatch => {
+        return action => {
+            
+        }
+    }
 })
 
 
