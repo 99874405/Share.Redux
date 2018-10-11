@@ -20,8 +20,8 @@ export class Provider extends React.Component {
 }
 
 
-export function connect() {
-    return function () {
+export function connect(mapStateToProps) {
+    return function (Component) {
         
     }
 }
