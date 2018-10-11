@@ -14,18 +14,21 @@ function connect(mapStateToProps) {
     return Component => {
         return class extends React.Component {
 
-            state = {
-                now: Date.now()
-            }
+            state = mapStateToProps(store)
 
             componentDidMount() {
-                store.listener(() => {
-                    this.setState({ now: Date.now() })
-                })
+                // mock listener
+                setInterval(() => {
+                    this.setState(state => {
+                        return Object.assign({}, state, {
+                            now: Date.now()
+                        })
+                    })
+                }, 2000)
             }
 
             render() {
-                return <Component {...mapStateToProps(store)} />
+                return <Component {...this.state} />
             }
         }
     }
