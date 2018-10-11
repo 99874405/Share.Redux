@@ -35,6 +35,9 @@ const store = createStore((state, action) => {
                 if (typeof action === 'object') {
                     next(action)
                 }
+                if (typeof action === 'function') {
+                    action(next)
+                }
             }
         }
     },
