@@ -32,7 +32,9 @@ const store = createStore((state, action) => {
     function thunk(store) {
         return next => {
             return action => {
-                
+                if (typeof action === 'object') {
+                    next(action)
+                }
             }
         }
     },
