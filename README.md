@@ -1,106 +1,125 @@
 import React from 'react'
 import Types from 'prop-types'
+import { Progress, Button } from 'antd'
 
 
-const store = {
-    profile: {
-        name: 'free',
-        age: 20
+function createStore(reducer, middleware) {
+    let cb = function () {}
+    let state = reducer(undefined, {})
+    let store = {
+        getState() {
+            return state
+        },
+        dispatch(action) {
+            state = reducer(state, action)
+            cb()
+        },
+        subscribe(listener) {
+            cb = listener
+        }
     }
+
+    store.dispatch = middleware()(store)(store.dispatch)
+
+    return store
 }
 
+const store = createStore((state = { count: 50 }, action) => {
+    switch (action.type) {
 
-function connect(mapStateToProps) {
-    
-    return Component => {
-        
-        return (
-            class extends React.Component {
+        case 'decrement':
+            return { count: state.count - 10 < 0 ? 0 : state.count - 10 }
 
-                state = mapStateToProps(store)
+        case 'increment':
+            return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
 
-                componentDidMount() {
-                    
-                    // store.listener
-                    setInterval(() => {
-                        
-                        this.setState(state => {
-                            return Object.assign({}, state, {
-                                now: Date.now()
-                            })
-                        })
-
-                    }, 2000)
-                }
-
-                render() {
-                    return <Component {...this.state} />
+        default:
+            return state
+    }
+}, () => {
+    return ({ dispatch, getState }) => {
+        return next => {
+            return action => {
+                if (typeof action === 'function') {
+                    action(dispatch, getState)
+                } else {
+                    next(action)
                 }
             }
-        )
+        }
+    }
+})
+
+
+function connect(mapStataToProps) {
+    return Component => {
+        return class extends React.Component {
+
+            static contextTypes = {
+                store: Types.object,
+                dispatch: Types.func,
+                subscribe: Types.func,
+            }
+
+            componentWillMount() {
+                this.context.subscribe(() => { this.forceUpdate() })
+            }
+
+            render() {
+                console.log(this)
+                return <Component dispatch={this.context.dispatch} { ...mapStataToProps(this.context.store.getState()) } />
+            }
+        }
     }
 }
 
 
-const C_Wrapper = connect(state => state)(
-    class C extends React.Component {
+
+const A_Wrapper = connect(state => state)(
+    class A extends React.Component {
+
         render() {
             console.log(this)
             return (
                 <div>
-                    {/* { this.context.profile.name } */}
-                    {/* { this.props.profile.name } */}
+                    <Progress type="circle" percent={this.props.count} />&nbsp;&nbsp;
+                    <Button.Group>
+                        <Button icon="minus" onClick={this.decrement} />
+                        <Button icon="plus" onClick={this.increment} />
+                    </Button.Group>
                 </div>
             )
         }
-    }
-)
 
+        decrement = () => {
+            this.props.dispatch({ type: 'decrement' })
+        }
 
-class B extends React.Component {
-    render() {
-        return (
-            <C_Wrapper />
-        )
-    }
-}
-
-
-class A extends React.Component {
-    render() {
-        return (
-            <B />
-        )
-    }
-}
-
-
-class App extends React.Component {
-    static contextTypes = {
-        profile: Types.object
-    }
-
-    render() {
-        return (
-            <div>
-                <A {...this.context} />                
-            </div>
-        )
-    }
-}
+        increment = () => {
+            this.props.dispatch(dispatch => {
+                setTimeout(() => { dispatch({ type: 'increment' }) }, 1000)
+            })
+        }
+    })
 
 
 export default class extends React.Component {
 
     static childContextTypes = {
-        profile: Types.object
+        store: Types.object,
+        dispatch: Types.func,
+        subscribe: Types.func,
     }
 
     getChildContext() {
-        return store
+        return {
+            store: store,
+            dispatch: store.dispatch,
+            subscribe: store.subscribe
+        }
     }
 
     render() {
-        return <App />
+        return <A_Wrapper />
     }
 }
