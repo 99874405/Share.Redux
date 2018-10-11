@@ -8,7 +8,7 @@ export function createStore(reducer, middlewares) {
             return state
         },
         dispatch(action) {
-            state = reducer(state, action); listener(); return action
+            state = reducer(state, action); listener();
         },
         subscribe(callback) {
             listener = callback
