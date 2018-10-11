@@ -20,26 +20,15 @@ const store = createStore((state, action) => {
             }
     }
 }, [
-    function logger() {
-        return dispatch => {
+    function logger(store) {
+        return next => {
             return action => {
-                console.log('prev', store.getState())
-                dispatch(action)
-                console.log('next', store.getState())
+                console.log('prew state', store.getState())
+                next(action)
+                console.log('next state', store.getState())
             }
         }
-    },
-    function thunk() {
-        return dispatch => {
-            return action => {
-                if (typeof action === 'function') {
-                    action(dispatch)
-                } else {
-                    dispatch(action)
-                }
-            }
-        }
-    },
+    }
 ])
 
 
@@ -66,11 +55,11 @@ const UI = connect(state => state)(class extends React.Component {
     }
 
     increment = () => {
-        this.props.dispatch(function (dispatch) {
-            setTimeout(() => {
-                dispatch({ type: 'increment' })
-            }, 1000)
-        })
+        // this.props.dispatch(function (dispatch) {
+        //     setTimeout(() => {
+        //         dispatch({ type: 'increment' })
+        //     }, 1000)
+        // })
     }
 })
 
