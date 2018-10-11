@@ -9,25 +9,20 @@ const store = {
 }
 
 function aaa(fn1) {
-    return SSS => {
+    return Component => {
         return class Wrapper extends React.Component {
             render() {
-                return <SSS {...fn1(store)} />
+                return <Component {...fn1(store)} />
             }
         }
     }
 }
 
 
-const CW = aaa(state => {
+const C_Wrapper = aaa(state => {
     return state
 })(
     class C extends React.Component {
-
-        static contextTypes = {
-            profile: Types.object
-        }
-    
         render() {
     
             console.log(this)
@@ -45,7 +40,7 @@ const CW = aaa(state => {
 class B extends React.Component {
     render() {
         return (
-            <CW />
+            <C_Wrapper />
         )
     }
 }
