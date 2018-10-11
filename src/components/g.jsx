@@ -19,6 +19,8 @@ const store = createStore((state, action) => {
                 count: 50
             }
     }
+}, () => {
+    
 })
 
 
