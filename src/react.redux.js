@@ -1,5 +1,5 @@
 import React from 'react'
-export default class extends React.Component {
+export class Provider extends React.Component {
     render() {
         return this.props.children
     }
