@@ -14,4 +14,6 @@ export function createStore(reducer, middleware) {
             listener = listener
         },
     }
+    
+    return store
 }
