@@ -14,7 +14,7 @@ function connect(mapStateToProps) {
     
     return Component => {
         
-        return 
+        return (
             class extends React.Component {
 
                 state = mapStateToProps(store)
@@ -36,7 +36,8 @@ function connect(mapStateToProps) {
                 render() {
                     return <Component {...this.state} />
                 }
-        }
+            }
+        )
     }
 }
 
