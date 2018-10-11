@@ -22,6 +22,12 @@ export class Provider extends React.Component {
 
 export function connect(mapStateToProps) {
     return function (Component) {
-        
+        return class extends React.Component {
+            render() {
+                return (
+                    <Component />
+                )
+            }
+        }
     }
 }
