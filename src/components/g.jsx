@@ -5,7 +5,7 @@ import { Progress, Button } from 'antd'
 import { createStore } from '../redux'
 
 
-export default class extends React.Component {
+class UI extends React.Component {
 
     state = {
         count: 51
@@ -29,5 +29,14 @@ export default class extends React.Component {
 
     increment = () => {
         this.setState(state => ({ count: state.count + 10 > 100 ? 100 : state.count + 10 }))
+    }
+}
+
+
+export default class extends React.Component {
+    render() {
+        return (
+            <UI />
+        )
     }
 }
