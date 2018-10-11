@@ -67,11 +67,11 @@ const UI = connect(state => state)(class extends React.Component {
     }
 
     increment = () => {
-        // this.props.dispatch(function (dispatch) {
-        //     setTimeout(() => {
-        //         dispatch({ type: 'increment' })
-        //     }, 1000)
-        // })
+        this.props.dispatch(function (dispatch) {
+            setTimeout(() => {
+                dispatch({ type: 'increment' })
+            }, 1000)
+        })
     }
 })
 
