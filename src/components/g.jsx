@@ -19,10 +19,10 @@ const store = createStore((state, action) => {
                 count: 50
             }
     }
-}, () => {
+}, function thunk() {
     return dispatch => {
         return action => {
-            
+            console.log(action)
         }
     }
 })
