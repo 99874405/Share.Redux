@@ -7,7 +7,9 @@ import { Provider, connect } from '../react.redux'
 
 
 const store = createStore(() => {
-    return 50
+    return {
+        count: 50
+    }
 })
 
 
