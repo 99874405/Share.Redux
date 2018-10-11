@@ -24,7 +24,7 @@ const store = createStore((state, action) => {
         return next => {
             return action => {
                 console.log('prew state', store.getState())
-                next(action)
+                next(action); console.log(action)
                 console.log('next state', store.getState())
             }
         }
