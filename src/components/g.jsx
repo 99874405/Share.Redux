@@ -6,9 +6,12 @@ import { createStore } from '../redux'
 import { Provider, connect } from '../react.redux'
 
 
-const store = createStore(() => {
-    return {
-        count: 50
+const store = createStore((state, action) => {
+    switch (action.type) {
+        default:
+            return state || {
+                count: 50
+            }
     }
 })
 
@@ -22,7 +25,7 @@ const UI = connect(state => state)(class extends React.Component {
     render() {
         return (
             <div>
-                <Progress type="circle" percent={this.state.count} />&nbsp;&nbsp;
+                <Progress type="circle" percent={this.props.count} />&nbsp;&nbsp;
                 <Button.Group>
                     <Button icon="minus" onClick={this.decrement} />
                     <Button icon="plus" onClick={this.increment} />
