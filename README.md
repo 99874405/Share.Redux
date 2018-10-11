@@ -11,31 +11,37 @@ const store = {
 
 
 function connect(mapStateToProps) {
+    
     return Component => {
-        return class extends React.Component {
+        
+        return 
+            class extends React.Component {
 
-            state = mapStateToProps(store)
+                state = mapStateToProps(store)
 
-            componentDidMount() {
-                // mock listener
-                setInterval(() => {
-                    this.setState(state => {
-                        return Object.assign({}, state, {
-                            now: Date.now()
+                componentDidMount() {
+                    
+                    // store.listener
+                    setInterval(() => {
+                        
+                        this.setState(state => {
+                            return Object.assign({}, state, {
+                                now: Date.now()
+                            })
                         })
-                    })
-                }, 2000)
-            }
 
-            render() {
-                return <Component {...this.state} />
-            }
+                    }, 2000)
+                }
+
+                render() {
+                    return <Component {...this.state} />
+                }
         }
     }
 }
 
 
-const C_Wrapper = connect(state => { return state})(
+const C_Wrapper = connect(state => state)(
     class C extends React.Component {
         render() {
             console.log(this)
@@ -68,7 +74,7 @@ class A extends React.Component {
 }
 
 
-class Container extends React.Component {
+class App extends React.Component {
     static contextTypes = {
         profile: Types.object
     }
@@ -94,6 +100,6 @@ export default class extends React.Component {
     }
 
     render() {
-        return <Container />
+        return <App />
     }
 }
