@@ -39,9 +39,9 @@ const store = createStore((state, action) => {
     function logger(store) {
         return next => {
             return action => {
-                console.log('prev state', store.getState())
-                next(action)
-                console.log('next state', store.getState())
+                console.log('%c prev state', 'font-weight: 700; color: #40a9ff;', store.getState())
+                next(action); console.log(action)
+                console.log('%c next state', 'font-weight: 700; color: #40a9ff;', store.getState())
             }
         }
     }
