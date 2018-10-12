@@ -2,10 +2,14 @@ import React from 'react'
 import { Progress, Button } from 'antd'
 
 
+
+// redux
 import { createStore } from '../redux'
 import { connect, Provider } from '../react.redux'
 
 
+
+// fetch
 const fetch = function (action) {
     return dispatch => {
         clearTimeout(window.timeId) || (window.timeId = setTimeout(() => dispatch(action), 1000))
@@ -13,6 +17,8 @@ const fetch = function (action) {
 }
 
 
+
+// stroe
 const store = createStore((state, action) => {
     switch (action.type) {
         case 'decrement':
@@ -26,7 +32,8 @@ const store = createStore((state, action) => {
     }
 },
 
-// middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
+
+// middlewares
 [
     function thunk(store) {
         return next => {
@@ -39,9 +46,9 @@ const store = createStore((state, action) => {
     function logger(store) {
         return next => {
             return action => {
-                console.log('%c prev state', 'font-weight: 700; color: #40a9ff;', store.getState())
-                next(action); console.log(action)
-                console.log('%c next state', 'font-weight: 700; color: #40a9ff;', store.getState())
+                console.log('%c prev state', 'color: #666666; font-weight: 700;', store.getState())
+                next(action); console.log('%c action    ', 'color: #40a9ff; font-weight: 700;', action)
+                console.log('%c next state', 'color: #009a61; font-weight: 700;', store.getState())
                               console.log('')
             }
         }
@@ -49,6 +56,8 @@ const store = createStore((state, action) => {
 ])
 
 
+
+// Component
 const UI = connect(state => state)(class extends React.Component {
     render() {
         return (
@@ -70,6 +79,7 @@ const UI = connect(state => state)(class extends React.Component {
         this.props.dispatch(fetch({ type: 'increment' }))
     }
 })
+
 
 
 export default class extends React.Component {
