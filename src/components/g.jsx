@@ -3,7 +3,7 @@ import { Progress, Button } from 'antd'
 
 
 import { createStore } from '../redux'
-import { Provider, connect } from '../react.redux'
+import { connect, Provider } from '../react.redux'
 
 
 const store = createStore((state, action) => {
