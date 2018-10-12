@@ -42,7 +42,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [ 'env', 'react' ],
+                        presets: [ 'env', 'react', 'stage-3' ],
                         plugins: [ 'transform-class-properties', 'transform-decorators-legacy', ['import', { 'libraryName': 'antd', 'libraryDirectory': 'es', 'style': 'css' } ] ],
                     },
                 },
