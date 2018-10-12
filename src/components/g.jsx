@@ -8,7 +8,7 @@ import { connect, Provider } from '../react.redux'
 
 const fetch = function (action) {
     return dispatch => {
-        clearTimeout(window.timeId) && (window.timeId = setTimeout(() => dispatch(action), 1000))
+        clearTimeout(window.timeId) || (window.timeId = setTimeout(() => dispatch(action), 1000))
     }
 }
 
