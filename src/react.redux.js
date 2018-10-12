@@ -31,9 +31,8 @@ export function connect(mapStateToProps = function () {}) {
             }
 
             render() {
-                const { dispatch, getState } = this.context.store
                 return (
-                    <Component dispatch={dispatch} {...mapStateToProps(getState())} />
+                    <Component dispatch={this.context.store.dispatch} {...mapStateToProps(this.context.store.getState())} />
                 )
             }
         }
