@@ -42,6 +42,7 @@ const store = createStore((state, action) => {
                 console.log('%c prev state', 'font-weight: 700; color: #40a9ff;', store.getState())
                 next(action); console.log(action)
                 console.log('%c next state', 'font-weight: 700; color: #40a9ff;', store.getState())
+                              console.log('')
             }
         }
     }
