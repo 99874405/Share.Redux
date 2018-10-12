@@ -28,6 +28,14 @@ const store = createStore((state, action) => {
 
 // middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
 [
+    function thunk(store) {
+        return next => {
+            return action => {
+                if (typeof action === 'function') action(next)
+                if (typeof action === 'object') next(action)
+            }
+        }
+    },
     function logger(store) {
         return next => {
             return action => {
