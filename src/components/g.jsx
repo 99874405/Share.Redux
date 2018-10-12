@@ -28,7 +28,15 @@ const store = createStore((state, action) => {
 
 // middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
 [
-    
+    function logger(store) {
+        return next => {
+            return action => {
+                console.log('prev state', store.getState())
+                next(action)
+                console.log('next state', store.getState())
+            }
+        }
+    }
 ])
 
 
