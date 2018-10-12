@@ -1,7 +1,7 @@
 
 
 export function createStore(reducer, middlewares) {
-    let listener = () => {}
+    let listener = function () {}
     let state = reducer(undefined, {})
     let store = {
         getState() {
@@ -14,9 +14,9 @@ export function createStore(reducer, middlewares) {
             listener = callback
         },
     }
-    
+
     if (Array.isArray(middlewares)) {
-        middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
+        middlewares.forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
     }
 
     return store
