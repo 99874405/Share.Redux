@@ -6,6 +6,13 @@ import { createStore } from '../redux'
 import { connect, Provider } from '../react.redux'
 
 
+const fetch = function (action) {
+    return dispatch => {
+        setTimeout(() => dispatch(action), 1000)
+    }
+}
+
+
 const store = createStore((state, action) => {
     switch (action.type) {
         case 'decrement':
@@ -13,42 +20,17 @@ const store = createStore((state, action) => {
         
         case 'increment':
             return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
-
+        
         default:
-            return state || {
-                count: 50
-            }
+            return state || { count: 50 }
     }
-}, 
-
-// middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
+},
 [
-    function thunk(store) {
-        return next => {
-            return action => {
-                if (typeof action === 'object') {
-                    next(action)
-                }
-                if (typeof action === 'function') {
-                    action(next)
-                }
-            }
-        }
-    },
-    function logger(store) {
-        return next => {
-            return action => {
-                console.log('prew state', store.getState())
-                next(action); console.log(action)
-                console.log('next state', store.getState())
-            }
-        }
-    },
+
 ])
 
 
 const UI = connect(state => state)(class extends React.Component {
-
     render() {
         return (
             <div>
@@ -66,11 +48,7 @@ const UI = connect(state => state)(class extends React.Component {
     }
 
     increment = () => {
-        this.props.dispatch(function (dispatch) {
-            setTimeout(() => {
-                dispatch({ type: 'increment' })
-            }, 1000)
-        })
+        this.props.dispatch(fetch({ type: 'increment' }))
     }
 })
 
@@ -78,7 +56,7 @@ const UI = connect(state => state)(class extends React.Component {
 export default class extends React.Component {
     render() {
         return (
-            <Provider store={store}> 
+            <Provider store={store}>
                 <UI />
             </Provider>
         )
