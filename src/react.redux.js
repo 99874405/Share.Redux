@@ -3,7 +3,6 @@ import Types from 'prop-types'
 
 
 export class Provider extends React.Component {
-
     static childContextTypes = {
         store: Types.object
     }
@@ -20,7 +19,7 @@ export class Provider extends React.Component {
 }
 
 
-export function connect(mapStateToProps = () => {}) {
+export function connect(mapStateToProps = function () {}) {
     return Component => {
         return class extends React.Component {
             static contextTypes = {
@@ -28,12 +27,13 @@ export function connect(mapStateToProps = () => {}) {
             }
 
             componentWillMount() {
-                this.context.store.subscribe(() => this.forceUpdate())
+                this.context.store.subscribe(this.forceUpdate)
             }
 
             render() {
+                const { dispatch, getState } = this.context.store
                 return (
-                    <Component dispatch={this.context.store.dispatch} { ...mapStateToProps(this.context.store.getState()) } />
+                    <Component dispatch={dispatch} {...mapStateToProps(getState())} />
                 )
             }
         }
