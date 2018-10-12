@@ -27,7 +27,7 @@ export function connect(mapStateToProps = function () {}) {
             }
 
             componentWillMount() {
-                this.context.store.subscribe(this.forceUpdate)
+                this.context.store.subscribe(() => this.forceUpdate())
             }
 
             render() {
