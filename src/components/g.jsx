@@ -25,8 +25,10 @@ const store = createStore((state, action) => {
             return state || { count: 50 }
     }
 },
-[
 
+// middlewares.reverse().forEach(middleware => store.dispatch = middleware(store)(store.dispatch))
+[
+    
 ])
 
 
