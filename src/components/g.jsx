@@ -91,11 +91,11 @@ const UI = connect(state => state.g)(class extends React.Component {
     }
 
     decrement = () => {
-        this.props.dispatch({ type: 'decrement' })
+        this.props.dispatch({ type: 'g_decrement' })
     }
 
     increment = () => {
-        this.props.dispatch(fetch({ type: 'increment' }))
+        this.props.dispatch(fetch({ type: 'g_increment' }))
     }
 })
 
