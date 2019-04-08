@@ -4,6 +4,7 @@ import { Progress, Button } from 'antd'
 
 
 // redux
+import { combineReducers } from '../combineReducers'
 import { createStore } from '../redux'
 import { connect, Provider } from '../react.redux'
 
@@ -19,18 +20,33 @@ const fetch = function (action) {
 
 
 // stroe
-const store = createStore((state, action) => {
-    switch (action.type) {
-        case 'decrement':
-            return { count: state.count - 10 < 0 ? 0 : state.count - 10 }
-        
-        case 'increment':
-            return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
-        
-        default:
-            return state || { count: 50 }
-    }
-},
+const store = createStore(combineReducers({
+    f: (state, action) => {
+        switch (action.type) {
+            case 'f_decrement':
+                return { count: state.count - 10 < 0 ? 0 : state.count - 10 }
+            
+            case 'f_increment':
+                return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
+            
+            default:
+                return state || { count: 50 }
+        }
+    },
+    g: (state, action) => {
+        switch (action.type) {
+            case 'g_decrement':
+                return { count: state.count - 10 < 0 ? 0 : state.count - 10 }
+            
+            case 'g_increment':
+                return { count: state.count + 10 > 100 ? 100 : state.count + 10 }
+            
+            default:
+                return state || { count: 50 }
+        }
+    },
+}),
+
 
 
 // middlewares
@@ -60,8 +76,8 @@ const store = createStore((state, action) => {
 
 
 
-// Component
-const UI = connect(state => state)(class extends React.Component {
+// Sub Component
+const UI = connect(state => state.g)(class extends React.Component {
     render() {
         return (
             <div>
@@ -85,6 +101,7 @@ const UI = connect(state => state)(class extends React.Component {
 
 
 
+// Par Component
 export default class extends React.Component {
     render() {
         return (
