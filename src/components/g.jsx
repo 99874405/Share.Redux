@@ -35,21 +35,25 @@ const store = createStore((state, action) => {
 
 // middlewares
 [
-    function thunk(store) {
-        return next => {
-            return action => {
-                if (typeof action === 'function') action(next)
-                if (typeof action === 'object') next(action)
+    function thunk() {
+        return store => {
+            return next => {
+                return action => {
+                    if (typeof action === 'function') action(next)
+                    if (typeof action === 'object') next(action)
+                }
             }
         }
     },
-    function logger(store) {
-        return next => {
-            return action => {
-                console.log('%c prev state', 'color: #666666; font-weight: 700;', store.getState())
-                next(action); console.log('%c action    ', 'color: #40a9ff; font-weight: 700;', action)
-                console.log('%c next state', 'color: #009a61; font-weight: 700;', store.getState())
-                              console.log('')
+    function logger() {
+        return store => {
+            return next => {
+                return action => {
+                    console.log('%c prev state', 'color: #666666; font-weight: 700;', store.getState())
+                    next(action); console.log('%c action    ', 'color: #40a9ff; font-weight: 700;', action)
+                    console.log('%c next state', 'color: #009a61; font-weight: 700;', store.getState())
+                    console.log('')
+                }
             }
         }
     }
