@@ -55,7 +55,7 @@ const store = createStore((state, action) => {
                 }
             }
         }
-    }
+    },
 ])
 
 
