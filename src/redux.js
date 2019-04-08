@@ -1,26 +1,25 @@
 function createStore(reducer, middlewares) {
-    let _callback = () => {}
-    let _state = reducer(undefined, {})
-    let _store = {
-        getState() {
-            return _state
+    let cb = () => {}
+    let state = reducer(undefined, {})
+    let store = {
+        subscribe(callback) {
+            cb = callback
         },
         dispatch(action) {
-            let newState = reducer(_state, action)
-            if (newState !== _state) _callback(_state = newState)
+            cb(state = reducer(state, action))
         },
-        subscribe(callback) {
-            _callback = callback
+        getState() {
+            return state
         },
     }
 
     if (Array.isArray(middlewares)) {
         middlewares.reverse().forEach(middleware => {
-            _store.dispatch = middleware()(_store)(_store.dispatch)
+            store.dispatch = middleware()(store)(store.dispatch)
         })
     }
 
-    return _store
+    return store
 }
 
 
