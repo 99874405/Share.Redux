@@ -38,3 +38,9 @@ export function connect(mapStateToProps = function () {}) {
         }
     }
 }
+
+
+export {
+    Provider,
+    connect,
+}
