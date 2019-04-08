@@ -19,13 +19,13 @@ class Provider extends React.Component {
 }
 
 
-function connect(mapStateToProps = function () {}) {
+function connect(mapStateToProps = () => {}) {
     return Component => {
         return class extends React.Component {
             static contextTypes = {
                 store: Types.object
             }
-
+            
             componentWillMount() {
                 this.context.store.subscribe(() => this.forceUpdate())
             }
