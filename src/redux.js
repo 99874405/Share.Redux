@@ -3,11 +3,11 @@ function createStore(reducer, middlewares) {
     let _state = reducer(undefined, {})
     let _store = {
         getState() {
-            return state
+            return _state
         },
         dispatch(action) {
-            let newState = reducer(state, action)
-            if (newState !== state) _callback(state = newState)
+            let newState = reducer(_state, action)
+            if (newState !== _state) _callback(_state = newState)
         },
         subscribe(callback) {
             _callback = callback
@@ -16,11 +16,11 @@ function createStore(reducer, middlewares) {
 
     if (Array.isArray(middlewares)) {
         middlewares.reverse().forEach(middleware => {
-            store.dispatch = middleware()(store)(store.dispatch)
+            _store.dispatch = middleware()(_store)(_store.dispatch)
         })
     }
 
-    return store
+    return _store
 }
 
 
