@@ -2,7 +2,7 @@ import React from 'react'
 import Types from 'prop-types'
 
 
-export class Provider extends React.Component {
+class Provider extends React.Component {
     static childContextTypes = {
         store: Types.object
     }
@@ -19,7 +19,7 @@ export class Provider extends React.Component {
 }
 
 
-export function connect(mapStateToProps = function () {}) {
+function connect(mapStateToProps = function () {}) {
     return Component => {
         return class extends React.Component {
             static contextTypes = {
